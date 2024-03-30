@@ -27,7 +27,6 @@ const App = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-  const loaderRef = useRef(null);
 
   useEffect(() => {
     if (error) {
@@ -63,15 +62,7 @@ const App = () => {
     }
   };
 
-  const scrollToLoader = () => {
-    // window.scrollTo({
-    //   top: loaderRef.current.offsetTop,
-    //   behavior: "smooth",
-    // });
-  };
-
   const handleClick = async () => {
-    scrollToLoader();
     try {
       setLoading(true);
       setPage((prevPage) => prevPage + 1);
