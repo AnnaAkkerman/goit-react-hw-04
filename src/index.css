@@ -7,26 +7,27 @@
 
 body {
   margin: 0 auto;
-  padding: 20px 0;
-  width: 375px;
+  padding: 2px;
+  box-sizing: border-box;
+  /* width: 375px; */
 }
 
 #root {
-  border: 3px solid #111;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: blanchedalmond;
+  /* border: 3px solid #111;
+  border-radius: 8px; */
+  /* padding: 20px; */
+  /* background-color: blanchedalmond; */
 }
 
 @media screen and (min-width: 768px) {
   body {
-    width: 768px;
+    /* width: 768px; */
   }
 }
 
 @media screen and (min-width: 1440px) {
   body {
-    width: 1440px;
+    /* width: 1440px; */
   }
 }
 h1,

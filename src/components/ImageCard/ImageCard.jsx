@@ -1,10 +1,17 @@
-const ImageCard = ({ url }) => {
+import css from "./ImageCard.module.css";
+
+const ImageCard = ({ photo, openModal }) => {
+  const handleClick = () => {
+    openModal(photo);
+  };
   return (
-    <div>
-      <a href={url.regular}>
-        <img src={url.small} alt="" />
-      </a>
-      <p></p>
+    <div className={css.itemPhotoContainer}>
+      <img
+        className={css.itemPhoto}
+        onClick={handleClick}
+        src={photo.urls.small}
+        alt={photo.alt_description}
+      />
     </div>
   );
 };

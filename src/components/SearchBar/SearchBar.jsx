@@ -1,26 +1,38 @@
 import css from "./SearchBar.module.css";
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () =>
+  toast("To search for images you must enter text...", {
+    icon: "🚩",
+  });
 
 const SearchBar = ({ onSearch }) => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
-    const topic = form.elements.topic.value;
-    onSearch(topic);
+    const inputedTopic = form.elements.topic.value;
+    inputedTopic ? onSearch(inputedTopic) : notify();
+
+    form.reset();
   };
 
   return (
     <header>
-      <form onSubmit={handleSubmit}>
+      <form className={css.searchForm} onSubmit={handleSubmit}>
         <input
+          className={css.searchInput}
           type="text"
           name="topic"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
         />
-        <button type="submit">Search</button>
+        <button className={css.searchBtn} type="submit">
+          Search
+        </button>
       </form>
+      <Toaster position="top-center" reverseOrder={false} />
     </header>
   );
 };
