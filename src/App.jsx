@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
@@ -29,13 +29,7 @@ const App = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (error) {
-      toast.error("Oops, something went wrong...");
-      const intervalId = setInterval(() => {
-        setError(false);
-      }, 2000);
-      return () => clearInterval(intervalId);
-    }
+    if (error) toast.error("Oops, something went wrong...");
   }, [error]);
 
   function openModal(photo) {
@@ -49,6 +43,7 @@ const App = () => {
 
   const handleSearch = async (inputedTopic) => {
     try {
+      setError(false);
       setPhotos([]);
       setLoading(true);
       setPage(1);
@@ -64,6 +59,7 @@ const App = () => {
 
   const handleClick = async () => {
     try {
+      setError(false);
       setLoading(true);
       setPage((prevPage) => prevPage + 1);
       const loadingMore = await fetchPhotosWithTopic(topic, page + 1);
